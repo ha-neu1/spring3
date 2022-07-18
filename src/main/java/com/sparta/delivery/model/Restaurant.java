@@ -1,11 +1,14 @@
 package com.sparta.delivery.model;
 
+import com.sparta.delivery.dto.RestaurantRequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Getter
+@Setter
 @Entity
 @NoArgsConstructor
 public class Restaurant {
@@ -21,4 +24,10 @@ public class Restaurant {
 
     @Column(nullable = false)
     private int deliveryFee;
+
+    public Restaurant(RestaurantRequestDto requestDto) {
+        this.name = requestDto.getName();
+        this.minOrderPrice = requestDto.getMinOrderPrice();
+        this.deliveryFee = requestDto.getDeliveryFee();
+    }
 }
