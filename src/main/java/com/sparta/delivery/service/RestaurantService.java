@@ -36,7 +36,4 @@ public class RestaurantService {
         return restaurantRepository.save(restaurant);
     }
 
-    public List<Restaurant> showRestaurant() {
-        return restaurantRepository.findAll();
-    }
 }
