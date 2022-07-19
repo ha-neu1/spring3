@@ -21,13 +21,13 @@ public class RestaurantService {
         int deliveryFee = requestDto.getDeliveryFee();
 
         if (minOrderPrice < 1000 || minOrderPrice > 100000) {
-            throw new IllegalArgumentException("허용값을 벗어났습니다.");
+            throw new IllegalArgumentException("1,000원 ~ 100,000원만 입력 가능합니다.");
         }
         if (minOrderPrice % 100 != 0) {
             throw new IllegalArgumentException("100원 단위로 입력해주세요.");
         }
         if (deliveryFee < 0 || deliveryFee > 10000 ) {
-            throw new IllegalArgumentException("허용값을 벗어났습니다.");
+            throw new IllegalArgumentException("0원 ~ 10,000원만 입력 가능합니다.");
         }
         if (deliveryFee % 500 != 0) {
             throw new IllegalArgumentException("500원 단위로 입력해주세요.");
