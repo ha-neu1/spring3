@@ -2,13 +2,16 @@ package com.sparta.delivery.dto;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
 public class OrderFoodResponseDto {
 
-    private String restaurantName;
-    private List<OrderFoodResponseDto> foods;
-    private int deliveryFee;
-    private int totalPrice;
+    private String name;
+    private int quantity;
+    private int price;
+
+    public  OrderFoodResponseDto(String name, int quantity, int price) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+    }
 }

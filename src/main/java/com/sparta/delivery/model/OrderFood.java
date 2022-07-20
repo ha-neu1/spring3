@@ -6,12 +6,11 @@ import lombok.ToString;
 
 import javax.persistence.*;
 
-@Setter
-@ToString(exclude = "order")
 @Getter
+@Setter
 @Entity
 public class OrderFood {
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
@@ -25,11 +24,15 @@ public class OrderFood {
 
     private int quantity;
 
-    protected OrderFood() {
+    public OrderFood() {
+
     }
 
-    public OrderFood(Food food, int quantity) {
+    public OrderFood(Food food, Order order, int quantity) {
         this.food = food;
+        this.order = order;
         this.quantity = quantity;
     }
+
+
 }
