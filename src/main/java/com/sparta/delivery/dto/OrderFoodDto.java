@@ -1,8 +1,8 @@
 package com.sparta.delivery.dto;
 
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
+@Data
 public class OrderFoodDto {
     private Long id;
     private int quantity;
