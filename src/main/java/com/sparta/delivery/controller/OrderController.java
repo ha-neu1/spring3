@@ -23,11 +23,11 @@ public class OrderController {
     }
 
 
-    //주문 조회
+    //메뉴판 조회
     @GetMapping("/orders")
-    public List<OrderResponseDto> showOrder(){
-        return orderService.showOrders();
+    public ResponseEntity<List<OrderResponseDto>> getOrders() {
+        List<OrderResponseDto> orderResponseDto = orderService.showOrders();
+        return ResponseEntity.ok().body(orderResponseDto);
     }
-
 
 }

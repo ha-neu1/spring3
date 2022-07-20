@@ -16,9 +16,9 @@ public class RestaurantService {
     private final RestaurantRepository restaurantRepository;
 
     @Transactional
-    public Restaurant registerRestaurant(RestaurantRequestDto requestDto) {
-        int minOrderPrice = requestDto.getMinOrderPrice();
-        int deliveryFee = requestDto.getDeliveryFee();
+    public Restaurant registerRestaurant(RestaurantRequestDto restaurantDto) {
+        int minOrderPrice = restaurantDto.getMinOrderPrice();
+        int deliveryFee = restaurantDto.getDeliveryFee();
 
         if (minOrderPrice < 1000 || minOrderPrice > 100000) {
             throw new IllegalArgumentException("1,000원 ~ 100,000원만 입력 가능합니다.");
@@ -32,7 +32,7 @@ public class RestaurantService {
         if (deliveryFee % 500 != 0) {
             throw new IllegalArgumentException("500원 단위로 입력해주세요.");
         }
-        Restaurant restaurant = new Restaurant(requestDto);
+        Restaurant restaurant = new Restaurant(restaurantDto);
         return restaurantRepository.save(restaurant);
     }
 
