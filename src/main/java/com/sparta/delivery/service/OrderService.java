@@ -30,7 +30,7 @@ public class OrderService {
         OrderResponseDto orderResponseDto = new OrderResponseDto();
 
         Restaurant restaurant = restaurantRepository.findById(restaurantId)
-                .orElseThrow(() -> new IllegalArgumentException("없는 식당입니다."));
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 식당입니다."));
 
         orderResponseDto.setRestaurantName(restaurant.getName());
         orderResponseDto.setDeliveryFee(restaurant.getDeliveryFee());
@@ -68,7 +68,7 @@ public class OrderService {
         orderResponseDto.setTotalPrice(totalPrice + restaurant.getDeliveryFee());
 
         if(totalPrice < restaurant.getMinOrderPrice()) {
-            throw new IllegalArgumentException("식당의 최소 주문 금액보다 낮습니다.");
+            throw new IllegalArgumentException("최소 주문 금액보다 낮습니다.");
         }
 
         orderRepository.save(order);
